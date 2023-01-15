@@ -29,6 +29,8 @@
 [Department of Computer Science](http://www.cs.wustl.edu/cs/)
 [Washington University](http://www.wustl.edu/),  [St. Louis, Missouri](http://www.st-louis.mo.us/)
 
+>Professor Schmidt's old link http://www.cs.wustl.edu/~schmidt is down, his current page is https://www.dre.vanderbilt.edu/~schmidt/, which contains a PDF foler https://www.dre.vanderbilt.edu/~schmidt/PDF/. But I can't find the well-known http://www.cs.wustl.edu/~schmidt/win32-cv-1.html8 file, so I took a copy from https://blog.csdn.net/chaosllgao/article/details/7797854 and translated to this Markdown file. All rights belongs to Professor Schmidt.
+
 ## 1. Introduction
 
 The threading API provided by the Microsoft Win32  [Richter]  family of operating systems ( i.e. , Windows NT, Windows '95, and Windows CE) provides some of the same concurrency constructs defined by the POSIX Pthreads specification  [Pthreads] . For instance, they both support mutexes, which serialize access to shared state. However, Win32 lacks full-fledged  condition variables , which are a synchronization mechanism used by threads to wait until a condition expression involving shared data attains a particular state.
