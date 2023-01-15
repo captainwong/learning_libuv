@@ -149,7 +149,7 @@ sema_post (sema_t *s)
 
 To further clarify the behavior of counting semaphores, assume there are two threads, **T1**  and **T2** , both of which are collaborating via semaphore `sema_t *s` . If **T1**  calls `sema_wait` when `s`'s semaphore count is `0` it will block until thread **T2**  calls `sema_post`. When **T2** subsequently calls `sema_post`, this function detects if the shared data `waiters_count_` is > `0`, which signifies that thread **T1** is blocked waiting to acquire semaphore `s`.
 
-When thread **T_2** signals the condition variable `count_nonzero_` in `sema_post`, thread **T1** is awakened in `pthread_cond_wait`. When thread **T1** is rescheduled and dispatched, it re-evaluates its condition expression, i.e., `s->count_ == 0`. If `count_` is > `0` the `sema_post` function returns to thread **T1**.
+When thread **T2** signals the condition variable `count_nonzero_` in `sema_post`, thread **T1** is awakened in `pthread_cond_wait`. When thread **T1** is rescheduled and dispatched, it re-evaluates its condition expression, i.e., `s->count_ == 0`. If `count_` is > `0` the `sema_post` function returns to thread **T1**.
 
 Note that a while loop is used to wait for condition variable `count_nonzero_` in `sema_wait`. This condition variable looping idiom [Lea] is necessary since another thread, e.g., **T3**, may have acquired the semaphore first and decremented `s->count_` back to `0` before thread **T1** is awakened. In this example, the while loop ensures that **T1** doesn't return until the semaphore is > `0`. In general, the while loop idiom ensures that threads don't return from `pthread_cond_wait` prematurely.
 
