@@ -13,7 +13,7 @@
       - [Evaluating the PulseEvent Solution](#evaluating-the-pulseevent-solution)
     - [3.2. The SetEvent Solution](#32-the-setevent-solution)
       - [Evaluating the SetEvent Solution](#evaluating-the-setevent-solution)
-  - [3.3. The Generation Count Solution](#33-the-generation-count-solution)
+    - [3.3. The Generation Count Solution](#33-the-generation-count-solution)
       - [Evaluating the Generation Count Solution](#evaluating-the-generation-count-solution)
     - [3.4. The SignalObjectAndWait Solution](#34-the-signalobjectandwait-solution)
       - [Evaluating the SignalObjectAndWait Solution](#evaluating-the-signalobjectandwait-solution)
@@ -501,7 +501,7 @@ Although the solution above doesn't suffer from the lost wakeup bug exhibited by
 
   In general, race conditions can occur with condition variable implementations that use internal state if threads don't acquire the `external_mutex` when calling `pthread_cond_signal` and `pthread_cond_broadcast`. The POSIX Pthread specification allows these functions to be called by a thread whether or not that thread has currently locked the `external_mutex`. Therefore, although the use of the internal lock can increase overhead, it is necessary to provide robust, standard-compliant condition variable programming model.
 
-## 3.3. The Generation Count Solution
+### 3.3. The Generation Count Solution
 
 There are several ways to solve the fairness and correctness problems. The following example illustrates one strategy for alleviating these problems. We start by creating a more sophisticated `pthread_cond_t` struct .
 
