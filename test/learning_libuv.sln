@@ -11,6 +11,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "queue_test", "queue_test\qu
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "queue_struct", "queue_struct\queue_struct.vcxproj", "{37E26302-0690-4F4D-B061-F08EA2D6AA84}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "uvbook", "uvbook", "{A966BEE6-632F-4DF0-A7DC-1F7D6B11B349}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "uvwget", "uvwget\uvwget.vcxproj", "{0FCECD38-5D96-43EB-8A57-DC56DCA8C37A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -51,9 +55,20 @@ Global
 		{37E26302-0690-4F4D-B061-F08EA2D6AA84}.Release|x64.Build.0 = Release|x64
 		{37E26302-0690-4F4D-B061-F08EA2D6AA84}.Release|x86.ActiveCfg = Release|Win32
 		{37E26302-0690-4F4D-B061-F08EA2D6AA84}.Release|x86.Build.0 = Release|Win32
+		{0FCECD38-5D96-43EB-8A57-DC56DCA8C37A}.Debug|x64.ActiveCfg = Debug|x64
+		{0FCECD38-5D96-43EB-8A57-DC56DCA8C37A}.Debug|x64.Build.0 = Debug|x64
+		{0FCECD38-5D96-43EB-8A57-DC56DCA8C37A}.Debug|x86.ActiveCfg = Debug|Win32
+		{0FCECD38-5D96-43EB-8A57-DC56DCA8C37A}.Debug|x86.Build.0 = Debug|Win32
+		{0FCECD38-5D96-43EB-8A57-DC56DCA8C37A}.Release|x64.ActiveCfg = Release|x64
+		{0FCECD38-5D96-43EB-8A57-DC56DCA8C37A}.Release|x64.Build.0 = Release|x64
+		{0FCECD38-5D96-43EB-8A57-DC56DCA8C37A}.Release|x86.ActiveCfg = Release|Win32
+		{0FCECD38-5D96-43EB-8A57-DC56DCA8C37A}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0FCECD38-5D96-43EB-8A57-DC56DCA8C37A} = {A966BEE6-632F-4DF0-A7DC-1F7D6B11B349}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A9BB647B-8818-4C1C-BAB0-80D670736A90}

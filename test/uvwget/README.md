@@ -1,0 +1,1 @@
+`DEBUG` 模式下不能链接 `libcurl.lib` 即 `DEBUG=no` 版本，只能链接 `libcurl_debug.lib` 即 `DEBUG=yes` 的版本，否则退出时会报 `Invalid address specified to RtlValidateHeap` 错误.
