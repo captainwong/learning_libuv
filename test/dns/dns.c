@@ -9,7 +9,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "../libuv.h"
+#include "G:/dev_libs/libuv.h"
 
 uv_loop_t* loop;
 

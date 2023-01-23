@@ -7,7 +7,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../libuv.h"
+#include "G:/dev_libs/libuv.h"
 
 #define FIB_UNTIL 25
 uv_loop_t* loop;

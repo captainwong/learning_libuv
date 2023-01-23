@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "../libuv.h"
+#include "G:/dev_libs/libuv.h"
 
 uv_barrier_t blocker;
 uv_rwlock_t numlock;

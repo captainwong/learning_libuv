@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "../libuv.h"
+#include "G:/dev_libs/libuv.h"
 
 
 #ifdef _WIN32

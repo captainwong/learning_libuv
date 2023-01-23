@@ -1,4 +1,4 @@
-#include "../libuv.h"
+#include "G:/dev_libs/libuv.h"
 #include <stdio.h>
 
 uv_loop_t* loop;

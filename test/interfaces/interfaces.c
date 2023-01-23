@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "../libuv.h"
+#include "G:/dev_libs/libuv.h"
 
 int main() {
     char buf[512];
