@@ -38,8 +38,9 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <uv.h>
-#include <curl/curl.h>
+
+#include "../libuv.h"
+#include "F:/Documents/notes/libcurl.h"
 
 uv_loop_t* loop;
 CURLM* curl_handle;
