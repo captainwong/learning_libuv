@@ -176,7 +176,7 @@ void on_close(uv_handle_t* peer) {
 }
 
 void on_read(uv_stream_t* stream, ssize_t nread, const uv_buf_t* buf) {
-	print_func; dprintf("nread= %Id\n", nread);
+	print_func; dprintf("nread= %zd\n", nread);
 	client_t* client = stream->data;
 	enum llhttp_errno parse_ret;
 
