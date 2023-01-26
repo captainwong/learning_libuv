@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
-
+#include <string.h>
 #include <llhttp.h>
 #include <uv.h>
 
@@ -33,6 +33,27 @@ typedef struct {
 	llhttp_t parser;
 	uv_write_t wreq;
 }client_t;
+
+
+void nprintf(const char* at, size_t len, int newline) {
+	char buf[4096];
+	char* p = buf;
+	if (len < sizeof buf) {
+		p = buf;
+	} else {
+		p = malloc(len + 1);
+		check_not_null(p);
+	}
+	memcpy(p, at, len);
+	p[len] = '\0';
+	printf("%s", p);
+	if (newline)
+		printf("\n");
+
+	if (p != buf) {
+		free(p);
+	}
+}
 
 int on_message_begin(llhttp_t* llhttp) {
 	print_func;
@@ -188,7 +209,7 @@ void on_read(uv_stream_t* stream, ssize_t nread, const uv_buf_t* buf) {
 		free(buf->base);
 		return;
 	}
-
+	nprintf(buf->base, nread, 1);
 	parse_ret = llhttp_execute(&client->parser, buf->base, nread);
 	if (parse_ret != HPE_OK) {
 		fprintf(stderr, "Parse error: %s %s\n", llhttp_errno_name(parse_ret),

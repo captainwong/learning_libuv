@@ -146,7 +146,7 @@
     <ClCompile Include="llhttp\src\api.c" />
     <ClCompile Include="llhttp\src\http.c" />
     <ClCompile Include="llhttp\src\llhttp.c" />
-    <ClCompile Include="main.c" />
+    <ClCompile Include="uvhttpd.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="llhttp\include\llhttp.h" />
