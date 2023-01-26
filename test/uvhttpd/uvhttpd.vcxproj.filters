@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="llhttp">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="llhttp\include">
+      <UniqueIdentifier>{8e08816e-e40c-4391-af98-baa2961fa74d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="llhttp\src">
+      <UniqueIdentifier>{1fe2ca62-59c8-436c-99e5-b50f21151646}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="llhttp\src\api.c">
+      <Filter>llhttp\src</Filter>
+    </ClCompile>
+    <ClCompile Include="llhttp\src\http.c">
+      <Filter>llhttp\src</Filter>
+    </ClCompile>
+    <ClCompile Include="llhttp\src\llhttp.c">
+      <Filter>llhttp\src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="llhttp\include\llhttp.h">
+      <Filter>llhttp\include</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

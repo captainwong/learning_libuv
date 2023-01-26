@@ -39,7 +39,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "G:/dev_libs/libuv.h"
+#include "G:/dev_libs/uv.h"
 #include "G:/dev_libs/libcurl.h"
 
 uv_loop_t* loop;

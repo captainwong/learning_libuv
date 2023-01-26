@@ -7,7 +7,7 @@
 #include <unistd.h>
 #endif
 
-#include "G:/dev_libs/libuv.h"
+#include "G:/dev_libs/uv.h"
 
 uv_loop_t* loop;
 uv_tty_t tty;

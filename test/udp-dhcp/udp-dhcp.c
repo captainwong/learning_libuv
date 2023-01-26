@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "G:/dev_libs/libuv.h"
+#include "G:/dev_libs/uv.h"
 
 #ifdef _WIN32
 #pragma comment(lib, "Ws2_32.lib")
