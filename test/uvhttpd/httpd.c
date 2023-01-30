@@ -114,6 +114,14 @@ static void mybuf_clear(mybuf_t* buf) {
 
 /*************************** helper functions ****************/
 
+static void reset_request(uvhttpd_client_t* client) {
+	if (client->req.headers.headers != client->headers) {
+		free(client->req.headers.headers);
+	}
+	memset(&client->req, 0, sizeof(uvhttpd_request_t));
+	client->req.headers.headers = client->headers;
+}
+
 static void headers_append_key(uvhttpd_client_t* client, size_t offset, size_t len) {
 	if (client->req.headers.n == HEADERS_DEFAULT_LENGTH) {
 		uvhttpd_header_t* headers = malloc((client->req.headers.n + 1) * sizeof(uvhttpd_header_t));
@@ -121,11 +129,9 @@ static void headers_append_key(uvhttpd_client_t* client, size_t offset, size_t l
 		memcpy(headers, client->req.headers.headers, (client->req.headers.n) * sizeof(uvhttpd_header_t));
 		client->req.headers.headers = headers;
 	} else if (client->req.headers.n > HEADERS_DEFAULT_LENGTH) {
-		uvhttpd_header_t* headers = malloc((client->req.headers.n + 1) * sizeof(uvhttpd_header_t));
+		uvhttpd_header_t* headers = realloc(client->req.headers.headers, (client->req.headers.n + 1) * sizeof(uvhttpd_header_t));
 		check_not_null(headers);
-		free(client->req.headers.headers);
 		client->req.headers.headers = headers;
-		memcpy(headers, client->req.headers.headers, (client->req.headers.n) * sizeof(uvhttpd_header_t));
 	}
 	client->req.headers.headers[client->req.headers.n].key.offset = offset;
 	client->req.headers.headers[client->req.headers.n].key.len = len;
@@ -153,10 +159,9 @@ static int headers_contains(uvhttpd_client_t* client, const char* key, const cha
 
 static int on_message_begin(llhttp_t* llhttp) {
 	print_func;
-	uvhttpd_client_t* client = llhttp->data;
-	memset(&client->req, 0, sizeof(uvhttpd_request_t));
-	client->req.headers.headers = client->headers;
-	mybuf_clear(&client->pkt);
+	uvhttpd_client_t* client = llhttp->data; 
+	mybuf_clear(&client->pkt); 
+	reset_request(client);
 	return 0;
 }
 
@@ -243,13 +248,11 @@ static int on_message_complete(llhttp_t* llhttp) {
 	client->req.base = client->pkt.buf;
 	client->on_request(client, &client->req);
 
-	if (client->req.headers.headers != client->headers) {
-		free(client->req.headers.headers);
-	}
-
 	if (!headers_contains(client, "Connection", "Keep-Alive")) {
 		uv_close((uv_handle_t*)&client->tcp, on_close);
 	}
+
+	reset_request(client);
 
 	return 0;
 }
@@ -363,6 +366,7 @@ static void on_close(uv_handle_t* peer) {
 	uvhttpd_client_t* client = peer->data;
 	mybuf_clear(&client->buf);
 	mybuf_clear(&client->pkt);
+	reset_request(client);
 	free(peer); // since our client_t's first member is uv_tcp_t, so peer's addr IS our client's addr, just free it.
 }
 
@@ -409,6 +413,8 @@ static void on_connected(uv_stream_t* stream, int status) {
 	client->parser.data = client;
 	mybuf_init(&client->buf);
 	mybuf_init(&client->pkt);
+	client->req.headers.headers = client->headers;
+	client->req.headers.n = 0;
 	uv_read_start((uv_stream_t*)&client->tcp, on_alloc, on_read);
 }
 
