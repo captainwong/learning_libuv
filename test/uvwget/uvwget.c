@@ -40,7 +40,7 @@
 #include <stdlib.h>
 
 #include "G:/dev_libs/uv.h"
-#include "G:/dev_libs/libcurl.h"
+#include "G:/dev_libs/curl.h"
 
 uv_loop_t* loop;
 CURLM* curl_handle;
@@ -57,14 +57,10 @@ static curl_context_t* create_curl_context(curl_socket_t sockfd)
 {
     print_func;
     curl_context_t* context;
-
     context = (curl_context_t*)malloc(sizeof(*context));
-
     context->sockfd = sockfd;
-
     uv_poll_init_socket(loop, &context->poll_handle, sockfd);
     context->poll_handle.data = context;
-
     return context;
 }
 
@@ -173,6 +169,7 @@ static void on_timeout(uv_timer_t* req)
 static int start_timeout(CURLM* multi, long timeout_ms, void* userp)
 {
     print_func;
+    printf("start_timeout timeout_ms=%ld\n", timeout_ms);
     if (timeout_ms < 0) {
         uv_timer_stop(&timeout);
     } else {
@@ -188,6 +185,7 @@ static int handle_socket(CURL* easy, curl_socket_t s, int action, void* userp,
                          void* socketp)
 {
     print_func;
+    printf("handle_socket s=%d action=%d userp=%p socketp=%p\n", s, action, userp, socketp);
     curl_context_t* curl_context;
     int events = 0;
 

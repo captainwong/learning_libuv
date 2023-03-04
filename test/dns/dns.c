@@ -56,13 +56,13 @@ void on_resolved(uv_getaddrinfo_t* resolver, int status, struct addrinfo* res) {
 
     char addr[17] = { '\0' };
     uv_ip4_name((struct sockaddr_in*)res->ai_addr, addr, 16);
-    fprintf(stderr, "%s\n", addr);
+    fprintf(stderr, "%s %d\n", addr, ntohs(((struct sockaddr_in*)res->ai_addr)->sin_port));
 
-    uv_connect_t* connect_req = (uv_connect_t*)malloc(sizeof(uv_connect_t));
+    /*uv_connect_t* connect_req = (uv_connect_t*)malloc(sizeof(uv_connect_t));
     uv_tcp_t* socket = (uv_tcp_t*)malloc(sizeof(uv_tcp_t));
     uv_tcp_init(loop, socket);
 
-    uv_tcp_connect(connect_req, socket, (const struct sockaddr*)res->ai_addr, on_connect);
+    uv_tcp_connect(connect_req, socket, (const struct sockaddr*)res->ai_addr, on_connect);*/
 
     uv_freeaddrinfo(res);
 }

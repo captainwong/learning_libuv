@@ -19,6 +19,9 @@
     <Filter Include="llhttp\src">
       <UniqueIdentifier>{1fe2ca62-59c8-436c-99e5-b50f21151646}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{32ca9d09-d48b-4e34-b159-ca059629ca65}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="llhttp\src\api.c">
@@ -30,13 +33,31 @@
     <ClCompile Include="llhttp\src\llhttp.c">
       <Filter>llhttp\src</Filter>
     </ClCompile>
-    <ClCompile Include="uvhttpd.c">
+    <ClCompile Include="main.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mybuf.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="uv_httpd.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="uv_log.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="llhttp\include\llhttp.h">
       <Filter>llhttp\include</Filter>
+    </ClInclude>
+    <ClInclude Include="mybuf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="uv_httpd.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="uv_log.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
